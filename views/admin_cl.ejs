@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lambda</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+  <script src="assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="content">
+        <div class="logo">
+          <img src="assets/img/logo.png" alt="">
+        </div>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Главная</a>
+              </li>
+              <li>
+                <a href="/about">О нас</a>
+              </li>
+              <li>
+                <a href="/menu">Меню</a>
+              </li>
+              <li>
+                <a href="/admin">Управление меню</a>
+              </li>
+              <li>
+                <a href="/party">Вечера</a>
+              </li>
+              <li class="active">
+                <a href="">Управление вечерами</a>
+              </li>
+
+            </ul>
+          </nav>
+          <ul>
+            <li>
+              <a class="twitter" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a class="youtube" href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a class="facebook" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+
+    <main>
+
+      <div class="menu-content content" id="menu">
+        <div class="party">
+          <div class="reserv">
+            <h2 class="main-page-subtitle">Бронирование столиков</h2>
+            <table>
+              <tr>
+                <th>ФИО</th>
+                <th>E-mail</th>
+                <th>Количество мест</th>
+                <th>Дата</th>
+                <th>Управление</th>
+              </tr>
+
+              <% reservs.forEach(function(reserv){ %>
+                <tr>
+                  <td>
+                    <%=reserv.name %>
+                  </td>
+                  <td>
+                    <%=reserv.email %>
+                  </td>
+                  <td>
+                    <%=reserv.quantity %>
+                  </td>
+                  <td>
+                    <%=reserv.date %>
+                  </td>
+                  <td> <a class='removeLink ' data-id=<%=reserv._id %>+Reserv>Удалить</a></td>
+                </tr>
+                <% }); %>
+            </table>
+
+
+          </div>
+        </div>
+        <div class="party">
+          <div class="reserv">
+            <h2 class="main-page-subtitle">Бронь на вечера</h2>
+            <table>
+              <tr>
+                <th>ФИО</th>
+                <th>E-mail</th>
+                <th>Количество мест</th>
+                <th>Номер вечера</th>
+                <th>Управление</th>
+              </tr>
+
+              <% reserv_ps.forEach(function(reserv_p){ %>
+                <tr>
+                  <td>
+                    <%=reserv_p.name %>
+                  </td>
+                  <td>
+                    <%=reserv_p.email %>
+                  </td>
+                  <td>
+                    <%=reserv_p.quantity %>
+                  </td>
+                  <td>
+                    <%=reserv_p.number_p %>
+                  </td>
+                  <td> <a class='removeLink ' data-id=<%=reserv_p._id %>+Reserv_p >Удалить</a></td>
+                </tr>
+                <% }); %>
+            </table>
+          </div>
+        </div>
+        <div class="party">
+          <section>
+            <h2 class="main-page-subtitle">Тематические вечера</h2>
+
+            <% partys.forEach(function(party){ %>
+              <div class="dish">
+                <div class="dish-name">
+                  <p>
+                    <%=party.number %>
+                      <%=party.name %>
+                  </p>
+                  <p>
+                    <%=party.date %>
+                  </p>
+                  <a class='removeLink ' data-id=<%=party._id %>+Party>Удалить</a>
+                </div>
+                <p class="dish-ingredients">
+                  <%=party.description %>
+                </p>
+              </div>
+              <% }); %>
+
+                <div class="button">
+                  <a class="button" href="/create_party" id="add-party">Добавить</a>
+                </div>
+
+          </section>
+        </div>
+      </div>
+
+
+
+    </main>
+
+    <footer>
+      <div class="content">
+        <section>
+          <h3 class="footer-subtitle">О нас</h3>
+          <p>Хороший кофе, уютная обстановка и доброжелательный персонал. Мы готовы помочь Вам хорошо провести время.<br>Lamda лучшее кафе города.</p>
+        </section>
+        <section>
+          <h3 class="footer-subtitle">Часы работы</h3>
+          <div class="opening-hours">
+            <p><span>Пон-Чет:</span> 7:00-20:00 </p>
+            <p><span>Fri-Sun:</span> 7:00-22:00</p>
+          </div>
+          <div class="cards">
+            <div><i class="fa fa-cc-amex" aria-hidden="true"></i></div>
+            <div><i class="fa fa-cc-paypal" aria-hidden="true"></i></div>
+            <div><i class="fa fa-cc-visa" aria-hidden="true"></i></div>
+            <div><i class="fa fa-cc-discover" aria-hidden="true"></i></div>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-subtitle">Адрес</h3>
+          <p class="location">пр. Независимости<br> 128 </p>
+          <div class="socials">
+            <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href=""><i class="fa fa-trello" aria-hidden="true"></i></a>
+          </div>
+        </section>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/script.js"></script>
+  <script>
+  $(function() { //Когда DOM готов
+    $(".removeLink").click(function(event){ // отслеживаем ивент по нажатию на кнопку delete
+        var id = $(this).data("id"); // создаем ссылку на $this
+            console.log('"id:'+ id + '"');
+              $(this).parent().parent().remove();
+      $.ajax({
+        url: "admin",
+         method: "delete",
+         data: {
+         a: id
+       },
+
+         success: function(response){
+              $this.parent().remove();
+         },
+         error: function(response){
+            console.log();
+         }
+      });
+    });
+  });
+  </script>
+</body>
+
+</html>
